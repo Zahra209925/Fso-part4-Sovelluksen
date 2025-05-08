@@ -1,9 +1,12 @@
 {
   "name": "bloglist",
   "version": "1.0.0",
-  "description": "",
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
   "main": "index.js",
   "scripts": {
+    "homepage": "https://github.com/Zahra209925/Fso-part4-Sovelluksen.git",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "node --watch index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +16,12 @@
   "dependencies": {
     "dotenv": "^16.5.0",
     "express": "^4.18.2",
+    "gh-pages": "^6.3.0",
+    "lodash": "^4.17.21",
     "mongodb": "^6.16.0",
     "mongoose": "^8.14.1"
+  },
+  "directories": {
+    "test": "tests"
   }
 }
