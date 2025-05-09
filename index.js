@@ -6,20 +6,24 @@ const blogsRouter = require('./controllers/blogs');
 
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => logger.info('Connected to MongoDB'))
-  .catch((error) => logger.error('Error connecting to MongoDB:', error.message));
+// Yhdistetään MongoDB-tietokantaan
+mongoose.connect(config.MONGODB_URI)
+  .then(() => {
+    logger.info('Connected to MongoDB');
+    // Käynnistetään palvelin
+    app.listen(config.PORT, () => {
+      logger.info(`Server running on port ${config.PORT}`);
+    });
+  })
+  .catch((error) => {
+    logger.error('Error connecting to MongoDB:', error.message);
+  });
 
-
-
+// Middleware
 app.use(express.json());
 app.use('/api/blogs', blogsRouter);
 
 
-const PORT = config.PORT || 3003;
-app.listen(PORT, () => {
-  logger.info(`Server running on port ${PORT}`);
-});
 
 
 
